@@ -1,0 +1,179 @@
+#appointment {
+  .container {
+    display: grid;
+    grid-template-columns: 47% 47%;
+    justify-content: space-between;
+    gap: 2rem;
+
+    .info {
+      p {
+        margin: 0.5rem 0 2rem;
+      }
+
+      article {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 1.5rem;
+
+        small {
+          margin-top: 0.4rem;
+          display: block;
+        }
+
+        .info-icon {
+          font-size: 1.5rem;
+          background: $secondary-color;
+          padding: 0.8rem;
+          color: $white-color;
+          border-radius: 50%;
+          height: fit-content;
+          display: flex;
+          font-size: 1.2rem;
+        }
+      }
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+
+      .form-group {
+        font-size: 0.8rem;
+        margin-bottom: 0.8rem;
+        // border: 1px solid #000;
+        display: block;
+        font-weight: 800;
+      }
+      input,
+      select,
+      textarea {
+        width: 100%;
+        padding: 1rem 1rem;
+        background: $white-color;
+        border-radius: 0.4rem;
+        resize: none;
+        font-weight: 700;
+        color: $black-color;
+        box-shadow: 0 0 5px rgba($black-color, 0.1);
+        appearance: none;
+        
+        
+      }
+/*  <======= Change autocomplete styles in WebKit ========>
+    <======= I set autocomplete off so no need for anymore ========>
+      input:-webkit-autofill,
+      input:-webkit-autofill:hover,
+      input:-webkit-autofill:focus,
+      textarea:-webkit-autofill,
+      textarea:-webkit-autofill:hover,
+      textarea:-webkit-autofill:focus,
+      select:-webkit-autofill,
+      select:-webkit-autofill:hover,
+      select:-webkit-autofill:focus {
+        -webkit-text-fill-color: $dark-color;
+        -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+      } */
+      .date-input {
+        position: relative;
+        // border: 1px solid #000;
+        width: 100%;
+        // margin-bottom: 0.8rem;
+        height: 100%;
+
+        i {
+          position: absolute;
+          z-index: 1;
+          top: -10%;
+          transform: translateY(50%);
+          color: $black-color;
+          right: 1%;
+          font-size: 1.5rem;
+        }
+      }
+      input[type="date"] {
+        position: absolute;
+
+        &::-webkit-calendar-picker-indicator {
+          position: absolute;
+          filter: invert(100%);
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+        }
+      }
+      select {
+        appearance: base-select; /* For modern browsers */
+        background-repeat: no-repeat;
+        background-position: right 1rem center;
+        background-size: 1rem;
+      }
+
+      /* Style the dropdown listbox (the picker) */
+      select::picker(select) {
+        appearance: base-select; /* For modern browsers */
+        /* Add other styles for the dropdown container */
+        background: $dark-color;
+        border-radius: 8px; /* Apply border-radius to the entire dropdown */
+      }
+      ::picker-icon {
+        transition: all 400ms ease;
+        position: relative;
+      }
+      select:open::picker-icon {
+        transform: rotate(180deg);
+      }
+
+      select option {
+        background-color: $primary-color;
+        color: $white-color;
+        padding: 1.5rem;
+        height: 1.5rem;
+        overflow: hidden;
+
+        &::checkmark {
+          order: 1;
+          content: ".";
+          margin-left: auto;
+          margin-block-start: -2.25rem;
+          font-size: 4rem;
+        }
+      }
+
+      select option:hover {
+        background-color: rgba($primary-color-variant, $alpha: 1);
+        color: #000;
+      }
+
+      button {
+        display: block;
+        margin-inline: auto;
+        width: fit-content;
+        font-size: 1rem;
+        align-self: flex-start;
+        @include button($white-color, $primary-color);
+      }
+    }
+  }
+}
+
+/* ============================= MEDIA QUERIES (MEDIUM AND SMALL DEVICES) ============================ */
+
+@media screen and (max-width: 1024px) {
+  #appointment {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .container {
+      grid-template-columns: 80%;
+      justify-content: center;
+      .info {
+        h2,
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+}

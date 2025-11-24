@@ -1,0 +1,156 @@
+#specialists {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    place-items: center;
+    gap: 2rem;
+    width: 70%;
+    //  border: 1px solid red;
+
+    article {
+      background: $white-color;
+      border-radius: 1rem;
+      box-shadow: 0 1.5rem 1.5rem rgba($black-color, 0.1);
+      position: relative;
+
+      fieldset {
+        border-radius: 1rem;
+        transition: all 700ms ease;
+        // border: 1px solid #000;
+
+        &:hover {
+          box-shadow: none;
+
+          .specialists__image:hover::before {
+            left: 0;
+            border-radius: 1rem;
+            opacity: 1;
+            visibility: visible;
+          }
+
+          .specialists__socials,
+          + .specialists__whatsapp {
+            opacity: 1;
+            visibility: visible;
+            transition: all 300ms ease;
+          }
+        }
+        .specialists__image {
+          height: 23rem;
+          position: relative;
+          border-radius: 1rem;
+          overflow: hidden;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+              135deg,
+              rgba($primary-color, 0.8),
+              rgba($primary-color-variant, 0.8)
+            );
+            opacity: 0;
+            visibility: hidden;
+            border-radius: 50%;
+            transition: all 1s ease;
+          }
+          img {
+            height: 100%;
+          }
+        }
+
+        .specialists__details {
+          margin: 1.5rem 0;
+          text-align: center;
+
+          h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+          }
+
+          small {
+            font-size: 1rem;
+          }
+        }
+
+        .specialists__socials {
+          display: flex;
+          justify-content: center;
+          flex-direction: column;
+          position: absolute;
+          top: 1.2rem;
+          right: 1.2rem;
+          gap: 1rem;
+          opacity: 0;
+          visibility: hidden;
+          transition: all 100ms 400ms ease;
+
+          a {
+            font-size: 1.5rem;
+            color: $primary-color;
+            transition: color 300ms ease;
+            background: $white-color;
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+
+            &:hover {
+              color: $white-color;
+              background: $primary-color;
+            }
+          }
+        }
+      }
+      .specialists__whatsapp {
+        font-size: 1.2rem;
+        color: $white-color;
+        transition: all 100ms 400ms ease;
+        background: $success-color;
+        padding: 0.5rem;
+        position: absolute;
+        left: 50%;
+        bottom: 30%;
+        transform: translateX(-50%);
+        display: flex;
+        border-radius: 50%;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+
+        &:hover {
+          color: $white-color;
+          background: $primary-color;
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+}
+
+/* ============================= MEDIA QUERIES (MEDIUM DEVICES) ============================ */
+
+@media screen and (max-width: 1024px) {
+  #specialists {
+    .container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+/* ============================= MEDIA QUERIES (SMALL DEVICES) ============================ */
+
+@media screen and (max-width: 800px) {
+  #specialists {
+    .container {
+      grid-template-columns:  1fr;
+    }
+  }
+}
